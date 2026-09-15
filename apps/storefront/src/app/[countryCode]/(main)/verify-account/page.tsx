@@ -1,25 +1,12 @@
-import { Metadata } from "next"
-import { Suspense } from "react"
+import { redirect } from "next/navigation"
 
-import VerifyAccount from "@modules/account/components/verify-account"
-
-export const metadata: Metadata = {
-  title: "Verify your email",
-  description: "Verify your email address to complete your registration.",
-}
-
-export default function VerifyAccountPage() {
-  return (
-    <div className="w-full flex justify-center px-8 py-12">
-      <Suspense
-        fallback={
-          <p className="text-base-regular text-ui-fg-base">
-            Verifying your email...
-          </p>
-        }
-      >
-        <VerifyAccount />
-      </Suspense>
-    </div>
-  )
+// No customer accounts in this shop (guest checkout only), so there's
+// nothing to verify. Send anyone who lands here to the homepage.
+export default async function VerifyAccountPage({
+  params,
+}: {
+  params: Promise<{ countryCode: string }>
+}) {
+  const { countryCode } = await params
+  redirect(`/${countryCode}`)
 }

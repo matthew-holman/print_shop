@@ -120,10 +120,7 @@ const CartDropdown = ({
                         key={item.id}
                         data-testid="cart-item"
                       >
-                        <LocalizedClientLink
-                          href={`/products/${item.product_handle}`}
-                          className="w-24"
-                        >
+                        <LocalizedClientLink href="/order" className="w-24">
                           <Thumbnail
                             thumbnail={item.thumbnail}
                             images={item.variant?.product?.images}
@@ -136,7 +133,7 @@ const CartDropdown = ({
                               <div className="flex flex-col overflow-ellipsis whitespace-nowrap mr-4 w-[180px]">
                                 <h3 className="text-base-regular overflow-hidden text-ellipsis">
                                   <LocalizedClientLink
-                                    href={`/products/${item.product_handle}`}
+                                    href="/order"
                                     data-testid="product-link"
                                   >
                                     {item.title}
@@ -210,10 +207,10 @@ const CartDropdown = ({
                   </div>
                   <span>Your shopping bag is empty.</span>
                   <div>
-                    <LocalizedClientLink href="/store">
+                    <LocalizedClientLink href="/order">
                       <>
-                        <span className="sr-only">Go to all products page</span>
-                        <Button onClick={close}>Explore products</Button>
+                        <span className="sr-only">Go to the order page</span>
+                        <Button onClick={close}>Upload a pattern</Button>
                       </>
                     </LocalizedClientLink>
                   </div>

@@ -118,10 +118,16 @@ export async function addToCart({
   variantId,
   quantity,
   countryCode,
+  metadata,
 }: {
   variantId: string
   quantity: number
   countryCode: string
+  // Arbitrary line item metadata - used to attach the uploaded pattern
+  // file's id/url/filename to this line item so it stays distinct from
+  // any other line item of the same variant (Medusa only merges line
+  // items that share both variant_id and metadata).
+  metadata?: Record<string, unknown>
 }) {
   if (!variantId) {
     throw new Error("Missing variant ID when adding to cart")
@@ -143,6 +149,7 @@ export async function addToCart({
       {
         variant_id: variantId,
         quantity,
+        ...(metadata ? { metadata } : {}),
       },
       {},
       headers

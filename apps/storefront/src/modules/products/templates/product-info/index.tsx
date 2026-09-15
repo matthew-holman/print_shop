@@ -20,14 +20,14 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         )}
         <Heading
           level="h2"
-          className="text-3xl leading-10 text-ui-fg-base"
+          className="font-serif font-medium text-3xl leading-10 text-ink"
           data-testid="product-title"
         >
           {product.title}
         </Heading>
 
         <Text
-          className="text-medium text-ui-fg-subtle whitespace-pre-line"
+          className="text-medium text-ink-soft whitespace-pre-line"
           data-testid="product-description"
         >
           {product.description}

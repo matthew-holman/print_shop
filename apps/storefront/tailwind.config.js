@@ -33,6 +33,26 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        // Print shop palette - warm, muted, "light and open".
+        cream: {
+          DEFAULT: "#FAF7F2",
+          deep: "#F3EDE4",
+        },
+        ink: {
+          DEFAULT: "#2B2420",
+          soft: "#6B5F54",
+          muted: "#8A7F72",
+        },
+        terracotta: {
+          DEFAULT: "#B85C38",
+          dark: "#9C4A2C",
+          tint: "#F1DDD1",
+        },
+        sage: {
+          DEFAULT: "#8A9A7E",
+          tint: "#E7ECE1",
+        },
+        line: "#E7DFD4",
       },
       borderRadius: {
         none: "0px",
@@ -59,7 +79,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "var(--font-sans)",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
@@ -68,6 +88,7 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        serif: ["var(--font-serif)", "Georgia", "Times New Roman", "serif"],
       },
       keyframes: {
         ring: {

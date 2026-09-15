@@ -1,7 +1,9 @@
 import { Metadata } from "next"
 
+import { STORE_NAME } from "@lib/constants"
+
 export const metadata: Metadata = {
-  title: "About & FAQ | [Your Shop Name]",
+  title: `About & FAQ | ${STORE_NAME}`,
   description:
     "Who we are, and answers to common questions about printing A0 sewing patterns.",
 }
@@ -48,7 +50,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-[15px] text-ink-soft leading-relaxed max-w-md">
             [Placeholder about-us copy — replace with your real story.]
-            We&apos;re [Your Names], and we started [Your Shop Name] in
+            We&apos;re [Your Names], and we started {STORE_NAME} in
             [Your City] after one too many evenings spent taping together
             dozens of printer pages just to cut a single pattern piece. So
             we picked up a wide-format printer and started printing

@@ -1,39 +1,12 @@
-import { Metadata } from "next"
+import { redirect } from "next/navigation"
 
-import { parseOptionValueIds } from "@lib/util/product-option-filters"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
-import StoreTemplate from "@modules/store/templates"
-
-export const metadata: Metadata = {
-  title: "Store",
-  description: "Explore all of our products.",
-}
-
-type StorePageSearchParams = Record<string, string | string[] | undefined> & {
-  sortBy?: SortOptions
-  page?: string
-  optionValueIds?: string | string[]
-}
-
-type Params = {
-  searchParams: Promise<StorePageSearchParams>
-  params: Promise<{
-    countryCode: string
-  }>
-}
-
-export default async function StorePage(props: Params) {
-  const params = await props.params;
-  const searchParams = await props.searchParams;
-  const { sortBy, page } = searchParams
-  const optionValueIds = parseOptionValueIds(searchParams)
-
-  return (
-    <StoreTemplate
-      sortBy={sortBy}
-      page={page}
-      countryCode={params.countryCode}
-      optionValueIds={optionValueIds}
-    />
-  )
+// This is a single-product shop — there's nothing to browse. Send anyone
+// who lands here (old links, bookmarks) straight to the order page.
+export default async function StorePage({
+  params,
+}: {
+  params: Promise<{ countryCode: string }>
+}) {
+  const { countryCode } = await params
+  redirect(`/${countryCode}/order`)
 }

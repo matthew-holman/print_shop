@@ -1,20 +1,13 @@
-import { retrieveCustomer } from "@lib/data/customer"
-// TODO: Re-add Toaster component when needed
-import AccountLayout from "@modules/account/templates/account-layout"
+import { redirect } from "next/navigation"
 
+// This shop runs guest-checkout only — no customer accounts. This layout
+// redirects the whole /account/* subtree (login, addresses, order history,
+// profile) to the homepage instead of rendering the account UI underneath it.
 export default async function AccountPageLayout({
-  dashboard,
-  login,
+  params,
 }: {
-  dashboard?: React.ReactNode
-  login?: React.ReactNode
+  params: Promise<{ countryCode: string }>
 }) {
-  const customer = await retrieveCustomer().catch(() => null)
-
-  return (
-    <AccountLayout customer={customer}>
-      {customer ? dashboard : login}
-      {/* TODO: Re-add Toaster component when needed */}
-    </AccountLayout>
-  )
+  const { countryCode } = await params
+  redirect(`/${countryCode}`)
 }

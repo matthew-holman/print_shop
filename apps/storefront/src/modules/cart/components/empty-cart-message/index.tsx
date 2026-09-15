@@ -12,11 +12,11 @@ const EmptyCartMessage = () => {
         Cart
       </Heading>
       <Text className="text-base-regular mt-4 mb-6 max-w-[32rem]">
-        You don&apos;t have anything in your cart. Let&apos;s change that, use
-        the link below to start browsing our products.
+        You don&apos;t have anything in your cart yet. Use the link below to
+        upload a pattern and start your order.
       </Text>
       <div>
-        <InteractiveLink href="/store">Explore products</InteractiveLink>
+        <InteractiveLink href="/order">Upload a pattern</InteractiveLink>
       </div>
     </div>
   )

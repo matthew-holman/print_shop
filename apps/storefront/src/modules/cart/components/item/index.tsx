@@ -48,7 +48,7 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
     <Table.Row className="w-full" data-testid="product-row">
       <Table.Cell className="!pl-0 p-4 w-24">
         <LocalizedClientLink
-          href={`/products/${item.product_handle}`}
+          href="/order"
           className={clx("flex", {
             "w-16": type === "preview",
             "small:w-24 w-12": type === "full",
@@ -64,12 +64,21 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
 
       <Table.Cell className="text-left">
         <Text
-          className="txt-medium-plus text-ui-fg-base"
+          className="txt-medium-plus text-ink"
           data-testid="product-title"
         >
           {item.product_title}
         </Text>
-        <LineItemOptions variant={item.variant} data-testid="product-variant" />
+        {item.metadata?.pattern_file_name ? (
+          <Text
+            data-testid="product-variant"
+            className="inline-block txt-medium text-ink-muted w-full overflow-hidden text-ellipsis"
+          >
+            {String(item.metadata.pattern_file_name)}
+          </Text>
+        ) : (
+          <LineItemOptions variant={item.variant} data-testid="product-variant" />
+        )}
       </Table.Cell>
 
       {type === "full" && (
