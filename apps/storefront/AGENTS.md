@@ -6,6 +6,19 @@ started as the stock `medusajs/dtc-starter` Next.js storefront; most of the
 account/order-history/collections machinery is still the unmodified
 starter and behaves accordingly.
 
+## UI review
+
+Rendered-UI checks (screenshots, computed styles) go through the `playwright`
+MCP server, not a source-only read. It's configured to drive the
+system-installed Google Chrome (`--browser=chrome --headless`) rather than
+Playwright's bundled Chromium — this dev machine runs macOS 13, and current
+Playwright versions ship no Chromium build at all for macOS 13 (the download
+map has no URL for it, not just a soft version check). If
+`npx playwright install` ever fails with "does not support chromium on
+mac13", that's this same issue — don't chase it by trying other Playwright
+versions; the `chrome` channel is the fix. See also the `run` skill for
+driving/screenshotting the app in general.
+
 ## Design system
 
 - Palette (cream/ink/terracotta/sage) and font families live in

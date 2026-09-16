@@ -43,6 +43,14 @@ yarn-error.log*
 .turbo
 .vscode
 
+# Playwright MCP output (screenshots, console/network logs from UI review sessions)
+.playwright-mcp/
+
+# Medusa local file-storage provider: every file uploaded through the store
+# (e.g. /store/pattern-uploads) lands here on disk, unrelated to source code
+# and often user-uploaded/sensitive content — never commit it.
+apps/backend/static/
+
 # vercel
 .vercel
 

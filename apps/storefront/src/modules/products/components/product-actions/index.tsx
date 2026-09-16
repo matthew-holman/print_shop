@@ -176,15 +176,18 @@ export default function ProductActions({
             Added to your cart. Upload another pattern, or check out when
             you&apos;re ready.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-stretch gap-3">
             <Button
               variant="secondary"
+              className="whitespace-nowrap"
               onClick={() => setJustAdded(false)}
             >
               Upload another pattern
             </Button>
             <a href={`/${countryCode}/checkout?step=address`}>
-              <Button variant="primary">Go to checkout</Button>
+              <Button variant="primary" className="w-full whitespace-nowrap">
+                Go to checkout
+              </Button>
             </a>
           </div>
         </div>
